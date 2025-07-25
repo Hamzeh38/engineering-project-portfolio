@@ -145,11 +145,10 @@ A graphical map image of the London Tube network that serves as the visual backg
 	- java -cp bin tube.gui.TubeView
 
 ## The GUI features:
-- A background image of the tube map
-- Interactive line icons and station nodes
-- Highlighted routes with station selection
-(The image file londonTube.jpg is required for visual rendering)
-
+- Highlighted selected station
+- Show all stations for selected line (photo 1)
+- Show the shortest path between two selected stations (photo 2)
+   
 ## Technologies Used
 
 - Java SE (Swing GUI)
