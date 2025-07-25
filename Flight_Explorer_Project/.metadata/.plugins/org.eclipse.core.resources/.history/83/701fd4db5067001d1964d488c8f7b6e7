@@ -1,0 +1,66 @@
+package TP1;
+
+import java.util.Scanner;
+
+import utilitaires.TabFileReader;
+
+public class InfoVols {
+	public static String depart;
+	public static String arrive;
+	//public static Boolean escale; 
+	
+	
+	//public static final int direct = 1;
+	//public static final int corre = 2;
+	//public static final int aeroport = 3;
+	
+	
+	
+	//Affichage vol avec depart sans choix d'arrivée 
+	public static void menu (String depart) {
+		String filename="departs.txt";
+		TabFileReader.readTextFile(filename,'\t',"data");
+		int i;
+		for (i = 0;i<TabFileReader.nrow();i++) { //colone 
+			if(depart.equals(TabFileReader.wordAt(i,1))) {
+				for (int j=0; j<TabFileReader.ncol();j++)
+					System.out.print(TabFileReader.wordAt(i,j)+"\t");
+			}
+			
+		}
+	}
+	
+	public static void menu2(String depart, String arrive) {
+		String filename="departs.txt";
+		TabFileReader.readTextFile(filename,'\t',"data");
+		int i;
+		for (i = 0;i<TabFileReader.nrow();i++) { //colone 
+			if(depart.equals(TabFileReader.wordAt(i,1))) {
+				if(arrive.equals(TabFileReader.wordAt(i,2))) {
+					for (int j=0; j<TabFileReader.ncol();j++)
+					System.out.print(TabFileReader.wordAt(i,j)+"\t");
+
+				}
+			}
+		}
+		
+		
+	}
+	
+	//conctructeur
+	
+	
+	
+	public static void main(String[] args) {
+		//TP1 
+		String departvol; //variable pour inserer les vol
+		System.out.println("rentrer depart "); //demande de depart
+		Scanner nom = new Scanner(System.in); //pour le scanner declaration variable nom arbitraire
+		departvol = nom.nextLine(); //demande du vol 
+		nom.close(); //Arreter la demande 
+		InfoVols.menu(departvol); //affichage de l'info vol 
+		
+	}
+	
+
+}

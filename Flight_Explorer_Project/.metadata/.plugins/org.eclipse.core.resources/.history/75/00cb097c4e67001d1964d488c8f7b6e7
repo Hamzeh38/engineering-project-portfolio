@@ -1,0 +1,35 @@
+package TP1;
+
+import utilitaires.TabFileReader;
+
+public class InfoVols {
+	public static String depart;
+	public static String arrive;
+	public static Boolean escale; 
+	
+	
+	//public static final int direct = 1;
+	//public static final int corre = 2;
+	//public static final int aeroport = 3;
+	 
+	public static void menu (String depart) {
+		String filename="departs.txt";
+		TabFileReader.readTextFile(filename,'\t',"data");
+		int i;
+		for (i = 0;i<TabFileReader.ncol();i++) {
+			if(depart.equals(TabFileReader.wordAt(i,1)) {
+				System.out.println("Le")
+			}
+			
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		//TP1 
+		
+
+	}
+	
+
+}

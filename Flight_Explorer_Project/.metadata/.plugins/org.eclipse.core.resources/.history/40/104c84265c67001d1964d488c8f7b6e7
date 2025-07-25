@@ -1,0 +1,106 @@
+package TP1;
+
+import java.util.Scanner;
+
+import utilitaires.TabFileReader;
+
+public class InfoVols {
+	public static String depart;
+	public static String arrive;
+	//public static Boolean escale; 
+	
+	
+	//public static final int direct = 1;
+	//public static final int corre = 2;
+	//public static final int aeroport = 3;
+	
+	//---------------choix de l'heure 
+	public static int toMinutes(String heure){
+		String []tokens=heure.split(":");
+		int h=Integer.parseInt(tokens[0]);
+		int m=Integer.parseInt(tokens[1]);
+		return h*60+m;
+		}
+	
+	
+	
+	//Affichage vol avec depart sans choix d'arrivée 
+	public static void menu (String depart) {
+		String filename="departs.txt";
+		TabFileReader.readTextFile(filename,'\t',"data");
+		int i;
+		for (i = 0;i<TabFileReader.nrow();i++) { //colone 
+			if(depart.equals(TabFileReader.wordAt(i,1))) {
+				for (int j=0; j<TabFileReader.ncol();j++)
+					System.out.print(TabFileReader.wordAt(i,j)+"\t");
+			}
+			
+		}
+	}
+	
+	public static void menu2(String depart, String arrive) {
+		String filename="departs.txt"; 
+		String corres;
+		TabFileReader.readTextFile(filename,'\t',"data");
+		int i = 0;
+		
+
+		for (i = 0;i<TabFileReader.nrow();i++) 
+		{ //colone 
+			if(depart.equals(TabFileReader.wordAt(i,1)))  
+			{
+					int heureArr = InfoVols.toMinutes(TabFileReader.wordAt(i,4));
+						corres = TabFileReader.wordAt(i,2);
+						for (int m = 0;m<TabFileReader.nrow();m++) 
+						{ //colone 
+							int heureDep = InfoVols.toMinutes(TabFileReader.wordAt(m,3));
+							if(corres.equals(TabFileReader.wordAt(m,1)))
+							{
+								if(arrive.equals(TabFileReader.wordAt(m,2)))//affichage du dexieme vol pour le corr
+									if(heureDep-heureArr >= 60 )
+									{
+										for(int k=0; k< TabFileReader.ncol(); k++)
+										{
+										System.out.print(TabFileReader.wordAt(i,k)+"\t");
+										}
+										System.out.println();
+										for(int J=0; J< TabFileReader.ncol(); J++)
+										System.out.print(TabFileReader.wordAt(m,J)+"\t");
+										
+										}
+										System.out.println();
+									}
+							}
+						
+					}	
+				
+			}
+		}
+		}
+		
+		
+	
+	
+	//conctructeur
+	
+	
+	
+	public static void main(String[] args) {
+		//TP1 
+		String departvol; //variable pour inserer les vol
+		String arrivevol; //variable arrivee insert
+		System.out.println("rentrer depart :"); //demande de depart
+		Scanner nom = new Scanner(System.in); //pour le scanner declaration variable nom arbitraire
+		departvol = nom.nextLine(); //demande du vol 
+		//nom.close(); //Arreter la demande 
+		System.out.println("rentrer arrivee :"); //demande de depart
+		//Scanner nom1 = new Scanner(System.in); //pour le scanner declaration variable nom arbitraire
+		arrivevol = nom.nextLine(); //demande du vol 
+		nom.close(); //Arreter la demande 
+		//InfoVols.menu(departvol); //affichage de l'info vol 
+		InfoVols.menu2(departvol, arrivevol);
+		
+	}
+	
+
+}
