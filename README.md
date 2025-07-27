@@ -158,5 +158,4 @@ A graphical map image of the London Tube network that serves as the visual backg
 
 ## Author
 
-Project developed by [Hamzeh KASSAN & Mor-Talla Niang]
-Java project for learning purposes
+Project developed by [Hamzeh KASSAN & Mor-Talla Niang] for learning purposes
